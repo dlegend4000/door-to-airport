@@ -13,17 +13,17 @@ export const Footer = () => {
               <span className="text-xl font-bold">DoorToAirport</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Making travel effortless, one bag at a time.
+              Dublin Airport storage and hotel transfers for stress-free travel.
             </p>
           </div>
 
           <div>
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Luggage Delivery</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Airport Storage</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Same-Day Service</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Corporate Plans</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Dublin Airport Storage</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Hotel Transfers</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Door Collection</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Tourist Services</a></li>
             </ul>
           </div>
 

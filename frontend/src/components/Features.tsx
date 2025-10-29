@@ -9,8 +9,8 @@ const features = [
   },
   {
     icon: Clock,
-    title: "Same Day Service",
-    description: "Book morning pickup, get evening delivery - or schedule days in advance.",
+    title: "Flexible Service",
+    description: "From Dublin Airport storage for departures to hotel transfers for arriving tourists.",
   },
   {
     icon: Bell,
@@ -19,8 +19,8 @@ const features = [
   },
   {
     icon: Smartphone,
-    title: "Easy Booking",
-    description: "Book in under 2 minutes through our simple web platform.",
+    title: "Simple Request",
+    description: "Enter your details and submit - we'll confirm if we can handle your booking.",
   },
   {
     icon: Lock,

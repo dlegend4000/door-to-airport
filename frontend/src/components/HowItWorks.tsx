@@ -3,34 +3,34 @@ import { Calendar, Package, Plane, CheckCircle } from "lucide-react";
 const steps = [
   {
     icon: Calendar,
-    title: "Book Online",
-    description: "Enter your details, get instant pricing, and schedule your pickup time.",
+    title: "Enter Your Details",
+    description: "Fill in your pickup/delivery details and submit your request.",
   },
   {
     icon: Package,
-    title: "We Collect",
-    description: "Our driver picks up your luggage from your door with barcode tagging.",
+    title: "We Review & Confirm",
+    description: "We manually review your request and send confirmation if we can handle your booking.",
   },
   {
     icon: Plane,
-    title: "Secure Storage",
-    description: "Your bags are safely stored and tracked until your flight time.",
+    title: "Collection & Storage",
+    description: "We collect from your door and store securely at Dublin Airport. Or if you're arriving, we collect from the airport and deliver to your hotel.",
   },
   {
     icon: CheckCircle,
-    title: "Airport Delivery",
-    description: "We deliver to Dublin Airport - you collect before check-in.",
+    title: "Ready When You Are",
+    description: "Your bags are safely stored at Dublin Airport or delivered to your hotel - ready when you need them.",
   },
 ];
 
 export const HowItWorks = () => {
   return (
-    <section className="py-20 bg-background">
+    <section id="how" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">How It Works</h2>
           <p className="text-lg text-muted-foreground">
-            Four simple steps to stress-free travel
+            Simple service for Dublin Airport storage and hotel transfers
           </p>
         </div>
 
