@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+
+# Node
+node_modules/
+
+# Build outputs
+frontend/dist/
+backend/dist/
+
+# Env files
+*.env
+*.env.local
+frontend/.env.local
+backend/.env.local
+frontend/.env
+backend/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Firebase local state
+.firebase/
+.firebaserc.local
+
+# Editor
+.vscode/
+.idea/
+
+# Misc
+**/*.local.*
