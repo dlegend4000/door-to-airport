@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { getAdminApp } from "./firebaseAdmin";
 import { sendBookingEmail } from "./functions/email";
+import { requireAuth } from "./middleware/auth";
 
 const app = express();
 app.use(cors());
@@ -14,7 +15,7 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
 
-app.post("/api/submit-booking", async (req, res) => {
+app.post("/api/submit-booking", requireAuth, async (req, res) => {
   try {
     const { airline, flyingFrom, flyingTo, date, flightTime, bags } = req.body;
 

@@ -1,14 +1,38 @@
 import { onRequest } from "firebase-functions/v2/https";
+import { defineSecret } from "firebase-functions/params";
 import { sendBookingEmail } from "./email";
+import { getAuth } from "firebase-admin/auth";
+import { getApps, initializeApp } from "firebase-admin/app";
+
+if (!getApps().length) {
+  initializeApp();
+}
+
+const receivingEmail = defineSecret("RECEIVING_EMAIL");
 
 export const submitBooking = onRequest(
   {
     cors: true,
+    secrets: [receivingEmail],
   },
   async (req, res) => {
     // Only allow POST requests
     if (req.method !== "POST") {
       res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    // Verify Firebase ID token
+    const header = (req.headers.authorization as string) || "";
+    const token = header.startsWith("Bearer ") ? header.slice(7) : null;
+    if (!token) {
+      res.status(401).json({ error: "Missing or invalid Authorization header" });
+      return;
+    }
+    try {
+      await getAuth().verifyIdToken(token);
+    } catch {
+      res.status(401).json({ error: "Invalid or expired token" });
       return;
     }
 

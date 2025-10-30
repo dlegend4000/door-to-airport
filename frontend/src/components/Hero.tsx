@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Plane, PlaneLanding, PlaneTakeoff, Calendar, Package, Heart, Lock, MapPin, Clock } from "lucide-react";
+import { auth } from "@/lib/firebase";
 
 export const Hero = () => {
   const [formData, setFormData] = useState({
@@ -28,10 +29,21 @@ export const Hero = () => {
     setSubmitStatus(null);
 
     try {
+      const currentUser = auth.currentUser;
+      const idToken = await currentUser?.getIdToken();
+      if (!idToken) {
+        setSubmitStatus("error");
+        console.error("User must be signed in to submit a booking.");
+        return;
+      }
+
       const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000";
       const response = await fetch(`${apiUrl}/api/submit-booking`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${idToken}`,
+        },
         body: JSON.stringify(formData),
       });
 
