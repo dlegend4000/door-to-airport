@@ -10,7 +10,7 @@ export const Footer = () => {
               <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center">
                 <Package className="w-6 h-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold">DoorToAirport</span>
+              <span className="text-xl font-bold">TakeMyLuggage</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Dublin Airport storage and hotel transfers for stress-free travel.
@@ -49,7 +49,7 @@ export const Footer = () => {
         </div>
 
         <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© 2025 DoorToAirport. All rights reserved. | Dublin, Ireland</p>
+          <p>© 2025 TakeMyLuggage. All rights reserved. | Dublin, Ireland</p>
         </div>
       </div>
     </footer>

@@ -76,7 +76,7 @@ export const Hero = () => {
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          src="/background%20video.mov"
+          src=""
           autoPlay
           loop
           muted
@@ -89,15 +89,16 @@ export const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Centered Title Section */}
         <div className="text-center max-w-5xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white drop-shadow-lg" style={{ textShadow: '1px 1px 4px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3)' }}>
-            Your Bags Handled from your door to Dublin Airport
-          </h1>
-          <p className="text-lg md:text-xl text-white/95 mb-2 drop-shadow-md" style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.3)' }}>
-            Leaving Dublin? We collect from your address and store securely at Dublin Airport. 
-            <span className="font-semibold text-white"> Arriving as a tourist?</span> We collect your luggage and transfer it straight to your hotel so you can explore straight away.
-          </p>
+<h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-black">
+  Your Bags Handled from your door to Dublin Airport
+</h1>
+<p className="text-lg md:text-xl text-gray-700 mb-2">
+  Leaving Dublin? We collect from your address and store securely at Dublin Airport. 
+  <span className="font-semibold text-black"> Arriving as a tourist?</span> We collect your luggage and transfer it straight to your hotel so you can explore straight away.
+</p>
+
           <p className="text-lg md:text-xl bg-gradient-primary bg-clip-text text-transparent font-medium">
-            Enjoy stress-free journeys with DoorToAirport.
+            Enjoy stress-free journeys with TakeMyLuggage.
           </p>
         </div>
 
@@ -258,49 +259,42 @@ export const Hero = () => {
         </div>
 
         {/* Feature Cards */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
-          <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Over 800,000 bags</h3>
-                <p className="text-muted-foreground">
-                  Handled with care. That's a lot of weight off travellers' hands.
-                </p>
-              </div>
-            </div>
-          </div>
+<div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16 place-items-stretch">
+  <div className="bg-card rounded-2xl p-6 shadow-soft border border-border flex flex-col justify-between h-full">
+    <div className="flex items-start gap-4">
+      <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0 1.657-1.343 3-3 3S6 12.657 6 11s1.343-3 3-3 3 1.343 3 3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 8a6 6 0 11-12 0 6 6 0 0112 0zM12 14v7m0 0h3m-3 0H9" />
+        </svg>
+      </div>
+      <div>
+        <h3 className="text-xl font-bold mb-2">Bags Sealed & Tracked</h3>
+        <p className="text-muted-foreground">
+          We seal your bags at pickup, monitor them 24/7, and provide you with a live tracking link.
+        </p>
+      </div>
+    </div>
+  </div>
 
-          <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
-                <Lock className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Bags Sealed & Tracked</h3>
-                <p className="text-muted-foreground">
-                  We seal your bags at pickup, monitor them 24/7, & give you a tracking link.
-                </p>
-              </div>
-            </div>
-          </div>
+  <div className="bg-card rounded-2xl p-6 shadow-soft border border-border flex flex-col justify-between h-full">
+    <div className="flex items-start gap-4">
+      <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a2 2 0 00-2-2h-3M9 20h6M4 20h5v-2a2 2 0 00-2-2H4a2 2 0 00-2 2v2h2zM12 12V8m0 0V4m0 4l3-3m-3 3L9 5" />
+        </svg>
+      </div>
+      <div>
+        <h3 className="text-xl font-bold mb-2">Dublin Airport Storage</h3>
+        <p className="text-muted-foreground">
+          Secure storage at Dublin Airport, ready for collection whenever you need it.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-          <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Dublin Airport Storage</h3>
-                <p className="text-muted-foreground">
-                  Secure storage at Dublin Airport, ready for collection when you need it.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+
 
         {/* Partner Airlines */}
         <div className="text-center max-w-6xl mx-auto">
