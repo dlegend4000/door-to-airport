@@ -17,6 +17,13 @@ export const submitBooking = onRequest(
   },
   async (req, res) => {
     // Only allow POST requests
+    res.set("Access-Control-Allow-Origin", "*");
+    res.set("Access-Control-Allow-Headers", "Authorization, Content-Type");
+    res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    if (req.method === "OPTIONS") {
+      res.status(204).send("");
+      return;
+    }
     if (req.method !== "POST") {
       res.status(405).json({ error: "Method not allowed" });
       return;
@@ -78,6 +85,7 @@ export const health = onRequest(
     cors: true,
   },
   async (_req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
     res.json({ ok: true });
   }
 );

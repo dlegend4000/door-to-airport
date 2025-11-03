@@ -15,6 +15,13 @@ exports.submitBooking = (0, https_1.onRequest)({
     secrets: [receivingEmail],
 }, async (req, res) => {
     // Only allow POST requests
+    res.set("Access-Control-Allow-Origin", "*");
+    res.set("Access-Control-Allow-Headers", "Authorization, Content-Type");
+    res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    if (req.method === "OPTIONS") {
+        res.status(204).send("");
+        return;
+    }
     if (req.method !== "POST") {
         res.status(405).json({ error: "Method not allowed" });
         return;
@@ -68,6 +75,7 @@ exports.submitBooking = (0, https_1.onRequest)({
 exports.health = (0, https_1.onRequest)({
     cors: true,
 }, async (_req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
     res.json({ ok: true });
 });
 //# sourceMappingURL=index.js.map

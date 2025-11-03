@@ -1,0 +1,23 @@
+[debug] [2025-11-03T12:26:31.199Z] ----------------------------------------------------------------------
+[debug] [2025-11-03T12:26:31.200Z] Command:       /Users/emmanuelkaribiye/.nvm/versions/node/v22.17.1/bin/node /Users/emmanuelkaribiye/.nvm/versions/node/v22.17.1/bin/firebase deploy --only functions
+[debug] [2025-11-03T12:26:31.200Z] CLI Version:   14.11.1
+[debug] [2025-11-03T12:26:31.200Z] Platform:      darwin
+[debug] [2025-11-03T12:26:31.201Z] Node Version:  v22.17.1
+[debug] [2025-11-03T12:26:31.201Z] Time:          Mon Nov 03 2025 12:26:31 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-11-03T12:26:31.201Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-03T12:26:31.273Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"predeploy"}
+[debug] [2025-11-03T12:26:31.275Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-03T12:26:31.275Z] > authorizing via signed-in user (emmanuelkaribiye31@gmail.com)
+[debug] [2025-11-03T12:26:31.275Z] [iam] checking project door-to-airport for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-11-03T12:26:31.275Z] Checked if tokens are valid: true, expires at: 1762176332822
+[debug] [2025-11-03T12:26:31.275Z] Checked if tokens are valid: true, expires at: 1762176332822
+[debug] [2025-11-03T12:26:31.276Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/door-to-airport:testIamPermissions [none]
+[debug] [2025-11-03T12:26:31.276Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/door-to-airport:testIamPermissions x-goog-quota-user=projects/door-to-airport
+[debug] [2025-11-03T12:26:31.276Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/door-to-airport:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-11-03T12:26:33.884Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/door-to-airport:testIamPermissions 200
+[debug] [2025-11-03T12:26:33.885Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/door-to-airport:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-11-03T12:26:33.885Z] Checked if tokens are valid: true, expires at: 1762176332822
+[debug] [2025-11-03T12:26:33.885Z] Checked if tokens are valid: true, expires at: 1762176332822
+[debug] [2025-11-03T12:26:33.885Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/door-to-airport/serviceAccounts/door-to-airport@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-11-03T12:26:33.885Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/door-to-airport/serviceAccounts/door-to-airport@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}

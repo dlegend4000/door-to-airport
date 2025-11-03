@@ -37,8 +37,11 @@ export const Hero = () => {
         return;
       }
 
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000";
-      const response = await fetch(`${apiUrl}/api/submit-booking`, {
+      const apiUrl = import.meta.env.VITE_API_URL as string | undefined;
+      // If VITE_API_URL is set (e.g., to your deployed Cloud Function URL), post directly to it.
+      // Otherwise, fall back to local Express endpoint.
+      const endpoint = apiUrl ? apiUrl : "http://localhost:4000/api/submit-booking";
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

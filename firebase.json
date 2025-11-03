@@ -8,6 +8,7 @@
       "backend/**"
     ],
     "rewrites": [
+      { "source": "/api/submit-booking", "function": { "functionId": "submitBooking", "region": "us-central1" } },
       { "source": "**", "destination": "/index.html" }
     ]
   },
