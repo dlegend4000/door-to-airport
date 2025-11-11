@@ -8,7 +8,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Plane, PlaneLanding, PlaneTakeoff, Calendar, Package, Heart, Lock, MapPin, Clock } from "lucide-react";
+import {
+  Plane,
+  PlaneLanding,
+  PlaneTakeoff,
+  Calendar,
+  Package,
+  Clock,
+  MapPin,
+} from "lucide-react";
 import { auth } from "@/lib/firebase";
 
 export const Hero = () => {
@@ -19,7 +27,9 @@ export const Hero = () => {
     date: "",
     bags: "1",
     flightTime: "",
+    location: "", // ✅ Added new location field
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
 
@@ -38,8 +48,6 @@ export const Hero = () => {
       }
 
       const apiUrl = import.meta.env.VITE_API_URL as string | undefined;
-      // If VITE_API_URL is set (e.g., to your deployed Cloud Function URL), post directly to it.
-      // Otherwise, fall back to local Express endpoint.
       const endpoint = apiUrl ? apiUrl : "http://localhost:4000/api/submit-booking";
       const response = await fetch(endpoint, {
         method: "POST",
@@ -61,6 +69,7 @@ export const Hero = () => {
           date: "",
           bags: "1",
           flightTime: "",
+          location: "", // ✅ Reset location
         });
       } else {
         setSubmitStatus("error");
@@ -85,21 +94,21 @@ export const Hero = () => {
           muted
           playsInline
           className="w-full h-full object-cover"
-          style={{ transform: 'scale(1)', transformOrigin: 'center' }}
+          style={{ transform: "scale(1)", transformOrigin: "center" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background/20" />
       </div>
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Centered Title Section */}
         <div className="text-center max-w-5xl mx-auto mb-12">
-<h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-black">
-  Your Bags Handled from your door to Dublin Airport
-</h1>
-<p className="text-lg md:text-xl text-gray-700 mb-2">
-  Leaving Dublin? We collect from your address and store securely at Dublin Airport. 
-  <span className="font-semibold text-black"> Arriving as a tourist?</span> We collect your luggage and transfer it straight to your hotel so you can explore straight away.
-</p>
-
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-black">
+            Your Bags Handled from your door to Dublin Airport
+          </h1>
+          <p className="text-lg md:text-xl text-gray-700 mb-2">
+            Leaving Dublin? We collect from your address and store securely at Dublin Airport.
+            <span className="font-semibold text-black"> Arriving as a tourist?</span> We collect your luggage and transfer it straight to your hotel so you can explore straight away.
+          </p>
           <p className="text-lg md:text-xl bg-gradient-primary bg-clip-text text-transparent font-medium">
             Enjoy stress-free journeys with TakeMyLuggage.
           </p>
@@ -108,12 +117,13 @@ export const Hero = () => {
         {/* Horizontal Booking Form */}
         <div className="max-w-7xl mx-auto mb-16">
           <form onSubmit={handleSubmit} className="bg-card rounded-2xl shadow-strong p-4 border border-border">
-            <div className="grid grid-cols-1 md:grid-cols-7 gap-4 items-end">
+            <div className="grid grid-cols-1 md:grid-cols-8 gap-4 items-end">
+              {/* Airline */}
               <div className="md:col-span-1">
                 <div className="relative">
                   <Plane className="absolute left-3 top-3 h-5 w-5 text-muted-foreground z-10" />
-                  <Select 
-                    value={formData.airline} 
+                  <Select
+                    value={formData.airline}
                     onValueChange={(value) => setFormData({ ...formData, airline: value })}
                     required
                   >
@@ -139,11 +149,12 @@ export const Hero = () => {
                 </div>
               </div>
 
+              {/* Flying From */}
               <div className="md:col-span-1">
                 <div className="relative">
                   <PlaneTakeoff className="absolute left-3 top-3 h-5 w-5 text-muted-foreground z-10" />
-                  <Select 
-                    value={formData.flyingFrom} 
+                  <Select
+                    value={formData.flyingFrom}
                     onValueChange={(value) => setFormData({ ...formData, flyingFrom: value })}
                     required
                   >
@@ -157,11 +168,12 @@ export const Hero = () => {
                 </div>
               </div>
 
+              {/* Flying To */}
               <div className="md:col-span-1">
                 <div className="relative">
                   <PlaneLanding className="absolute left-3 top-3 h-5 w-5 text-muted-foreground z-10" />
-                  <Select 
-                    value={formData.flyingTo} 
+                  <Select
+                    value={formData.flyingTo}
                     onValueChange={(value) => setFormData({ ...formData, flyingTo: value })}
                     required
                   >
@@ -194,10 +206,11 @@ export const Hero = () => {
                 </div>
               </div>
 
+              {/* Date */}
               <div className="md:col-span-1">
                 <div className="relative">
                   <Calendar className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                  <Input 
+                  <Input
                     type="date"
                     className="pl-10"
                     value={formData.date}
@@ -207,10 +220,11 @@ export const Hero = () => {
                 </div>
               </div>
 
+              {/* Time */}
               <div className="md:col-span-1">
                 <div className="relative">
                   <Clock className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                  <Input 
+                  <Input
                     type="time"
                     className="pl-10"
                     value={formData.flightTime}
@@ -220,10 +234,11 @@ export const Hero = () => {
                 </div>
               </div>
 
+              {/* Bags */}
               <div className="md:col-span-1">
                 <div className="relative">
                   <Package className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                  <Input 
+                  <Input
                     type="number"
                     min="1"
                     max="10"
@@ -236,13 +251,30 @@ export const Hero = () => {
                 </div>
               </div>
 
+              {/* ✅ New Location Field */}
+              <div className="md:col-span-1">
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    className="pl-10"
+                    placeholder="Eircode "
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Submit Button */}
               <div className="md:col-span-1">
                 <Button className="w-full h-10" size="lg" type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
               </div>
             </div>
-            
+
+            {/* Submission Status */}
             <div className="bg-secondary rounded-lg p-3 mt-4">
               {submitStatus === "success" ? (
                 <p className="text-sm text-center text-green-600 dark:text-green-400">
@@ -262,54 +294,78 @@ export const Hero = () => {
         </div>
 
         {/* Feature Cards */}
-<div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16 place-items-stretch">
-  <div className="bg-card rounded-2xl p-6 shadow-soft border border-border flex flex-col justify-between h-full">
-    <div className="flex items-start gap-4">
-      <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0 1.657-1.343 3-3 3S6 12.657 6 11s1.343-3 3-3 3 1.343 3 3z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 8a6 6 0 11-12 0 6 6 0 0112 0zM12 14v7m0 0h3m-3 0H9" />
-        </svg>
-      </div>
-      <div>
-        <h3 className="text-xl font-bold mb-2">Bags Sealed & Tracked</h3>
-        <p className="text-muted-foreground">
-          We seal your bags at pickup, monitor them 24/7, and provide you with a live tracking link.
-        </p>
-      </div>
-    </div>
-  </div>
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16 place-items-stretch">
+          <div className="bg-card rounded-2xl p-6 shadow-soft border border-border flex flex-col justify-between h-full">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 11c0 1.657-1.343 3-3 3S6 12.657 6 11s1.343-3 3-3 3 1.343 3 3z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M18 8a6 6 0 11-12 0 6 6 0 0112 0zM12 14v7m0 0h3m-3 0H9"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Bags Sealed & Tracked</h3>
+                <p className="text-muted-foreground">
+                  We seal your bags at pickup, monitor them 24/7, and provide you with a live tracking link.
+                </p>
+              </div>
+            </div>
+          </div>
 
-  <div className="bg-card rounded-2xl p-6 shadow-soft border border-border flex flex-col justify-between h-full">
-    <div className="flex items-start gap-4">
-      <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a2 2 0 00-2-2h-3M9 20h6M4 20h5v-2a2 2 0 00-2-2H4a2 2 0 00-2 2v2h2zM12 12V8m0 0V4m0 4l3-3m-3 3L9 5" />
-        </svg>
-      </div>
-      <div>
-        <h3 className="text-xl font-bold mb-2">Dublin Airport Storage</h3>
-        <p className="text-muted-foreground">
-          Secure storage at Dublin Airport, ready for collection whenever you need it.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+          <div className="bg-card rounded-2xl p-6 shadow-soft border border-border flex flex-col justify-between h-full">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 20h5v-2a2 2 0 00-2-2h-3M9 20h6M4 20h5v-2a2 2 0 00-2-2H4a2 2 0 00-2 2v2h2zM12 12V8m0 0V4m0 4l3-3m-3 3L9 5"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Dublin Airport Storage</h3>
+                <p className="text-muted-foreground">
+                  Secure storage at Dublin Airport, ready for collection whenever you need it.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-
-
-        {/* Partner Airlines */}
+        {/* Partner Airlines Section */}
         <div className="text-center max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-8">We are compatible with your favourite airlines</h2>
           <div className="relative overflow-hidden mx-auto max-w-4xl">
             <div className="flex animate-scroll gap-16 md:gap-20 items-center">
-              {/* First set */}
               <img src="/EasyJet-Logo.wine.svg" alt="EasyJet" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0" />
               <img src="/british-airways-1.svg" alt="British Airways" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0" />
               <img src="/images.png" alt="Airlines" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0" />
               <img src="/4DW7dWoxE9f3pJFqRGtBpW.jpg" alt="Airline" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0" />
-              {/* Duplicate set for seamless loop */}
+              {/* duplicate for animation */}
               <img src="/EasyJet-Logo.wine.svg" alt="EasyJet" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0" />
               <img src="/british-airways-1.svg" alt="British Airways" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0" />
               <img src="/images.png" alt="Airlines" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0" />
@@ -318,7 +374,6 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-
     </section>
   );
 };
